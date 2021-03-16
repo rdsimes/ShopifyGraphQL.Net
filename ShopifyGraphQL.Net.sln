@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopifySharp", "ShopifySharp\ShopifySharp.csproj", "{833EC12B-956D-427B-A598-2F12B84589EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopifyGraphQL.Net", "ShopifySharp\ShopifyGraphQL.Net.csproj", "{833EC12B-956D-427B-A598-2F12B84589EF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopifySharp.Tests", "ShopifySharp.Tests\ShopifySharp.Tests.csproj", "{B1391793-75FA-43D1-8D8C-0DF405D80DB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopifyGraphQL.Net.Tests", "ShopifySharp.Tests\ShopifyGraphQL.Net.Tests.csproj", "{B1391793-75FA-43D1-8D8C-0DF405D80DB7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C2A84FA5-9EA9-48EB-8A1C-EFDAEEC7D3FD}"
 	ProjectSection(SolutionItems) = preProject
