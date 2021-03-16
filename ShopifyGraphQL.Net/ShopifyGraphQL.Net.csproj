@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.1;netstandard1.4;net45</TargetFrameworks>
-    <AssemblyName>ShopifySharp</AssemblyName>
-    <RootNamespace>ShopifySharp</RootNamespace>
+    <AssemblyName>ShopifyGraphQL.Net</AssemblyName>
+    <RootNamespace>ShopifyGraphQL.Net</RootNamespace>
     <VersionPrefix>5.9.0</VersionPrefix>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
@@ -14,13 +14,14 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <Description>ShopifySharp is a C# and .NET library that helps developers easily authenticate with and manage Shopify stores.</Description>
-    <Authors>Nozzlegear</Authors>
+    <Description>ShopifyGraphQL.Net is a C# and .NET library that helps developers easily authenticate with and manage Shopify stores.</Description>
+    <Authors>Richard Simes</Authors>
     <Copyright>Nozzlegear Software</Copyright>
     <PackageLicenseUrl>https://raw.githubusercontent.com/nozzlegear/shopifysharp/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/nozzlegear/shopifysharp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/nozzlegear/shopifysharp</RepositoryUrl>
     <PackageTags>shopify,ecommerce</PackageTags>
+    <Company>Timely Ltd</Company>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="microsoft.extensions.primitives" Version="1.1.0" />
