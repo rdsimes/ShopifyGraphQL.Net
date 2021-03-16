@@ -28,7 +28,7 @@ write-host "============================ RESTORING DEPENDENCIES ================
 exec { & dotnet restore --verbosity quiet }
 
 # Get a list of the projects that will be built and packed (those that aren't test projects)
-$projects = gci "./ShopifySharp*/*.*sproj" | where-object -filterscript { $_ -inotmatch "tests" }
+$projects = gci "./ShopifyGraphQL.Net*/*.*sproj" | where-object -filterscript { $_ -inotmatch "tests" }
 
 # Pack both prerelease and release artifacts. 
 # The appveyor.yml script will automatically publish prerelease packages to nuget.
