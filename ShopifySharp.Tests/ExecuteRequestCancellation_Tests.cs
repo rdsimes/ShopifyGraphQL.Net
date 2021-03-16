@@ -168,7 +168,7 @@ namespace ShopifySharp.Tests
             });
         }
         
-        private static OrderService OrderService => new OrderService(Utils.MyShopifyUrl, Utils.AccessToken);
+        private static GraphService OrderService => new GraphService(Utils.MyShopifyUrl, Utils.AccessToken);
 
         [Fact]
         public async Task Cancelling_An_OrderService_List_Terminates_HttpRequest()
@@ -177,7 +177,7 @@ namespace ShopifySharp.Tests
 
             await Assert.ThrowsAnyAsync<OperationCanceledException>(async () =>
             {
-                var task = OrderService.ListAsync(cancellationToken: cts.Token);
+                var task = OrderService.PostAsync("", cancellationToken: cts.Token);
 
                 cts.Cancel();
 

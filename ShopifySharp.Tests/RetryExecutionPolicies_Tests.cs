@@ -1,43 +1,25 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
-using EmptyAssert = ShopifySharp.Tests.Extensions.EmptyExtensions;
 
 namespace ShopifySharp.Tests
 {
     [Trait("Category", "Retry policies")]
     public class RetryExecutionPolicies_Tests
     {
-        private OrderService OrderService { get; } = new OrderService(Utils.MyShopifyUrl, Utils.AccessToken);
-
-        private Order Order = new Order()
-        {
-            LineItems = new List<LineItem>()
-            {
-                new LineItem()
-                {
-                    Name = "Test Line Item",
-                    Title = "Test Line Item Title",
-                    Quantity = 2,
-                    Price = 5
-                }
-            },
-            TotalPrice = 5.00m,
-        };
-
+        private GraphService GraphService { get; } = new GraphService(Utils.MyShopifyUrl, Utils.AccessToken);
+                
         [Fact]
         public async Task NonLeakyBucketBreachShouldNotAttemptRetry()
         {
-            OrderService.SetExecutionPolicy(new SmartRetryExecutionPolicy());
+            GraphService.SetExecutionPolicy(new SmartRetryExecutionPolicy());
             bool caught = false;
             try
             {
                 //trip the 5 orders per minute limit on dev stores
                 foreach (var i in Enumerable.Range(0, 10))
                 {
-                    await OrderService.CreateAsync(this.Order);
+                    await GraphService.PostAsync("");
                 }
             }
             catch (ShopifyRateLimitException ex)
@@ -51,7 +33,7 @@ namespace ShopifySharp.Tests
         [Fact]
         public async Task NonLeakyBucketBreachShouldRetryWhenConstructorBoolIsFalse()
         {
-            OrderService.SetExecutionPolicy(new SmartRetryExecutionPolicy(false));
+            GraphService.SetExecutionPolicy(new SmartRetryExecutionPolicy(false));
             
             bool caught = false;
             
@@ -60,7 +42,7 @@ namespace ShopifySharp.Tests
                 //trip the 5 orders per minute limit on dev stores
                 foreach (var i in Enumerable.Range(0, 10))
                 {
-                    await OrderService.CreateAsync(this.Order);
+                    await GraphService.PostAsync("");
                 }
             }
             catch (ShopifyRateLimitException)
@@ -74,14 +56,14 @@ namespace ShopifySharp.Tests
         [Fact]
         public async Task LeakyBucketBreachShouldAttemptRetry()
         {
-            OrderService.SetExecutionPolicy(new SmartRetryExecutionPolicy());
+            GraphService.SetExecutionPolicy(new SmartRetryExecutionPolicy());
             
             bool caught = false;
             
             try
             {
                 //trip the 40/seconds bucket limit
-                await Task.WhenAll(Enumerable.Range(0, 45).Select(async _ => await OrderService.ListAsync()));
+                await Task.WhenAll(Enumerable.Range(0, 45).Select(async _ => await GraphService.PostAsync("")));
             }
             catch (ShopifyRateLimitException)
             {

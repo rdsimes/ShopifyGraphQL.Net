@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 using ShopifySharp.Filters;
 using ShopifySharp.Infrastructure;
 using ShopifySharp.Lists;
@@ -234,16 +235,13 @@ namespace ShopifySharp.Tests
         {
             bool thrown = false;
             int requestCount = 60;
-            IEnumerable<ListResult<Order>> list = null;
-            var service = new OrderService(Utils.MyShopifyUrl, Utils.AccessToken);
+            IEnumerable<JToken> list = null;
+            var service = new GraphService(Utils.MyShopifyUrl, Utils.AccessToken);
             service.SetExecutionPolicy(new RetryExecutionPolicy());
 
             try
             {
-                var tasks = Enumerable.Range(0, requestCount).Select(_ => service.ListAsync(new OrderListFilter()
-                {
-                    Limit = 1
-                }));
+                var tasks = Enumerable.Range(0, requestCount).Select(_ => service.PostAsync(""));
                 list = await Task.WhenAll(tasks);
             }
             catch (ShopifyRateLimitException)
@@ -261,16 +259,13 @@ namespace ShopifySharp.Tests
         {
             bool thrown = false;
             int requestCount = 60;
-            IEnumerable<ListResult<Order>> list = null;
-            var service = new OrderService(Utils.MyShopifyUrl, Utils.AccessToken);
+            IEnumerable<JToken> list = null;
+            var service = new GraphService(Utils.MyShopifyUrl, Utils.AccessToken);
             service.SetExecutionPolicy(new SmartRetryExecutionPolicy());
 
             try
             {
-                var tasks = Enumerable.Range(0, requestCount).Select(_ => service.ListAsync(new OrderListFilter()
-                {
-                    Limit = 1
-                }));
+                var tasks = Enumerable.Range(0, requestCount).Select(_ => service.PostAsync(""));
                 list = await Task.WhenAll(tasks);
             }
             catch (ShopifyRateLimitException)
@@ -287,15 +282,12 @@ namespace ShopifySharp.Tests
         public async Task Catches_Rate_Limit()
         {
             int requestCount = 60;
-            var service = new OrderService(Utils.MyShopifyUrl, Utils.AccessToken);
+            var service = new GraphService(Utils.MyShopifyUrl, Utils.AccessToken);
             ShopifyRateLimitException ex = null;
 
             try
             {
-                var tasks = Enumerable.Range(0, requestCount).Select(_ => service.ListAsync(new OrderListFilter()
-                {
-                    Limit = 1
-                }));
+                var tasks = Enumerable.Range(0, requestCount).Select(_ => service.PostAsync(""));
 
                 await Task.WhenAll(tasks);
             }
@@ -317,15 +309,12 @@ namespace ShopifySharp.Tests
         public async Task Catches_Rate_Limit_With_Base_Exception()
         {
             int requestCount = 60;
-            var service = new OrderService(Utils.MyShopifyUrl, Utils.AccessToken);
+            var service = new GraphService(Utils.MyShopifyUrl, Utils.AccessToken);
             ShopifyException ex = null;
 
             try
             {
-                var tasks = Enumerable.Range(0, requestCount).Select(_ => service.ListAsync(new OrderListFilter()
-                {
-                    Limit = 1
-                }));
+                var tasks = Enumerable.Range(0, requestCount).Select(_ => service.PostAsync(""));
 
                 await Task.WhenAll(tasks);
             }
