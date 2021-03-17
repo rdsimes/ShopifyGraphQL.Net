@@ -16,7 +16,7 @@
   <PropertyGroup>
     <Description>ShopifyGraphQL.Net is a C# and .NET library that helps developers easily authenticate with and manage Shopify stores.</Description>
     <Authors>Richard Simes</Authors>
-    <Copyright>Nozzlegear Software</Copyright>
+    <Copyright>Timely ltd, Nozzlegear Software</Copyright>
     <PackageLicenseUrl>https://raw.githubusercontent.com/nozzlegear/shopifysharp/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/nozzlegear/shopifysharp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/nozzlegear/shopifysharp</RepositoryUrl>
