@@ -9,6 +9,7 @@ namespace ShopifyGraphQL.Net.Tests
     [Trait("Category", "Authorization")]
     public class Authorization_Tests
     {
+        private readonly IAuthorizationService AuthorizationService = new AuthorizationService();
         [Fact]
         public void Validates_Proxy_Requests()
         {
@@ -95,23 +96,8 @@ namespace ShopifyGraphQL.Net.Tests
             bool isValid = AuthorizationService.IsAuthenticRequest(qs, Utils.SecretKey);
         }
 
-        [Fact]
-        public async Task Validates_Shop_Urls()
-        {
-            string validUrl = Utils.MyShopifyUrl;
-            string invalidUrl = "https://google.com";
+   
 
-            Assert.True(await AuthorizationService.IsValidShopDomainAsync(validUrl));
-            Assert.False(await AuthorizationService.IsValidShopDomainAsync(invalidUrl));
-        }
-
-        [Fact]
-        public async Task Validates_Shop_Malfunctioned_Urls()
-        {
-            string invalidUrl = "foo";
-
-            Assert.False(await AuthorizationService.IsValidShopDomainAsync(invalidUrl));
-        }
 
         [Fact]
         public void Builds_Authorization_Urls_With_Enums()

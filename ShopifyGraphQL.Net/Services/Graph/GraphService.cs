@@ -8,20 +8,21 @@ using ShopifyGraphQL.Net.Infrastructure;
 using Newtonsoft.Json;
 using System.Net;
 using System.Threading;
+using Newtonsoft.Json.Serialization;
 
 namespace ShopifyGraphQL.Net
 {
     /// <summary>
     /// A service for using or manipulating Shopify's Graph API.
     /// </summary>
-    public class GraphService : ShopifyService
+    public class GraphService : ShopifyService, IGraphService
     {
         /// <summary>
         /// Creates a new instance of <see cref="GraphService" />.
         /// </summary>
         /// <param name="myShopifyUrl">The shop's *.myshopify.com URL.</param>
         /// <param name="shopAccessToken">An API access token for the shop.</param>
-        public GraphService(string myShopifyUrl, string shopAccessToken) : base(myShopifyUrl, shopAccessToken) { }        
+        public GraphService(string myShopifyUrl, string shopAccessToken) : base(myShopifyUrl, shopAccessToken) { }
 
         /// <summary>
         /// Executes a Graph API Call.
@@ -69,6 +70,23 @@ namespace ShopifyGraphQL.Net
         }
 
         /// <summary>
+        /// Formats and executes a graphQL query with the given object as variables.
+        /// </summary>
+        /// <param name="query"></param>
+        /// <param name="variables"></param>
+        /// <returns>a dynamic object representing the JSON response</returns>
+        public async Task<dynamic> PostAsync(string query, object variables, CancellationToken cancellationToken = default)
+        {
+            var serializer = new JsonSerializer()
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
+            };
+            var graphQlQuery = JObject.FromObject(new { query, variables }, serializer);
+            var result = await PostAsync(graphQlQuery, cancellationToken);
+            return result.ToObject<object>();
+        }
+
+        /// <summary>
         /// Since Graph API Errors come back with error code 200, checking for them in a way similar to the REST API doesn't work well without potentially throwing unnecessary errors. This loses the requestId, but otherwise is capable of passing along the message.
         /// </summary>
         /// <param name="requestResult">The RequestResult<JToken> response from ExecuteRequestAsync.</param>
@@ -78,7 +96,7 @@ namespace ShopifyGraphQL.Net
             if (requestResult.Result["errors"] != null)
             {
                 var errorList = new List<string>();
-                
+
                 foreach (var error in requestResult.Result["errors"])
                 {
                     errorList.Add(error["message"].ToString());

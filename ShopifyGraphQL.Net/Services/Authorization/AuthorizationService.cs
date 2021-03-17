@@ -12,11 +12,10 @@ using ShopifyGraphQL.Net.Enums;
 using ShopifyGraphQL.Net.Infrastructure;
 using System.Text.RegularExpressions;
 using System.Net.Http.Headers;
-using System.Reflection;
 
 namespace ShopifyGraphQL.Net
 {
-    public static class AuthorizationService
+    public class AuthorizationService : IAuthorizationService
     {
         private static readonly Regex _querystringRegex = new Regex(@"[?|&]([\w\.]+)=([^?|^&]+)", RegexOptions.Compiled);
 
@@ -94,7 +93,7 @@ namespace ShopifyGraphQL.Net
         /// <param name="querystring">The collection of querystring parameters from the request. Hint: use Request.QueryString if you're calling this from an ASP.NET MVC controller.</param>
         /// <param name="shopifySecretKey">Your app's secret key.</param>
         /// <returns>A boolean indicating whether the request is authentic or not.</returns>
-        public static bool IsAuthenticRequest(NameValueCollection querystring, string shopifySecretKey)
+        public bool IsAuthenticRequest(NameValueCollection querystring, string shopifySecretKey)
         {
             // To calculate HMAC signature:
             // 1. Cast querystring to KVP pairs.
@@ -132,11 +131,12 @@ namespace ShopifyGraphQL.Net
         /// <param name="querystring">A dictionary containing the keys and values from the request's querystring.</param>
         /// <param name="shopifySecretKey">Your app's secret key.</param>
         /// <returns>A boolean indicating whether the request is authentic or not.</returns>
-        public static bool IsAuthenticRequest(IDictionary<string, string> querystring, string shopifySecretKey)
+        public bool IsAuthenticRequest(IDictionary<string, string> querystring, string shopifySecretKey)
         {
-            var qs = querystring.Aggregate(new NameValueCollection(),  (seed, current) =>   {     
-                seed.Add(current.Key, current.Value);    
-                return seed;   
+            var qs = querystring.Aggregate(new NameValueCollection(), (seed, current) =>
+            {
+                seed.Add(current.Key, current.Value);
+                return seed;
             });
 
             return IsAuthenticRequest(qs, shopifySecretKey);
@@ -148,7 +148,7 @@ namespace ShopifyGraphQL.Net
         /// <param name="querystring">The request's raw querystring.</param>
         /// <param name="shopifySecretKey">Your app's secret key.</param>
         /// <returns>A boolean indicating whether the request is authentic or not.</returns>
-        public static bool IsAuthenticRequest(string querystring, string shopifySecretKey)
+        public bool IsAuthenticRequest(string querystring, string shopifySecretKey)
         {
             return IsAuthenticRequest(ParseRawQuerystring(querystring), shopifySecretKey);
         }
@@ -160,7 +160,7 @@ namespace ShopifyGraphQL.Net
         /// <param name="querystring">The collection of querystring parameters from the request. Hint: use Request.QueryString if you're calling this from an ASP.NET MVC controller.</param>
         /// <param name="shopifySecretKey">Your app's secret key.</param>
         /// <returns>A boolean indicating whether the request is authentic or not.</returns>
-        public static bool IsAuthenticProxyRequest(NameValueCollection querystring, string shopifySecretKey)
+        public bool IsAuthenticProxyRequest(NameValueCollection querystring, string shopifySecretKey)
         {
             // To calculate signature, order all querystring parameters by alphabetical (exclude the
             // signature itself). Then, hash it with the secret key.
@@ -190,9 +190,10 @@ namespace ShopifyGraphQL.Net
         /// <param name="querystring">A dictionary containing the keys and values from the request's querystring.</param>
         /// <param name="shopifySecretKey">Your app's secret key.</param>
         /// <returns>A boolean indicating whether the request is authentic or not.</returns>
-        public static bool IsAuthenticProxyRequest(IDictionary<string, string> querystring, string shopifySecretKey)
+        public bool IsAuthenticProxyRequest(IDictionary<string, string> querystring, string shopifySecretKey)
         {
-            var qs = querystring.Aggregate(new NameValueCollection(), (seed, current) => {
+            var qs = querystring.Aggregate(new NameValueCollection(), (seed, current) =>
+            {
                 seed.Add(current.Key, current.Value);
                 return seed;
             });
@@ -206,7 +207,7 @@ namespace ShopifyGraphQL.Net
         /// <param name="querystring">The request's raw querystring.</param>
         /// <param name="shopifySecretKey">Your app's secret key.</param>
         /// <returns>A boolean indicating whether the request is authentic or not.</returns>
-        public static bool IsAuthenticProxyRequest(string querystring, string shopifySecretKey)
+        public bool IsAuthenticProxyRequest(string querystring, string shopifySecretKey)
         {
             return IsAuthenticProxyRequest(ParseRawQuerystring(querystring), shopifySecretKey);
         }
@@ -219,7 +220,7 @@ namespace ShopifyGraphQL.Net
         /// Hint: use Request.InputStream if you're calling this from an ASP.NET MVC controller.</param>
         /// <param name="shopifySecretKey">Your app's secret key.</param>
         /// <returns>A boolean indicating whether the webhook is authentic or not.</returns>
-        public static async Task<bool> IsAuthenticWebhook(NameValueCollection requestHeaders, Stream inputStream, string shopifySecretKey)
+        public async Task<bool> IsAuthenticWebhook(NameValueCollection requestHeaders, Stream inputStream, string shopifySecretKey)
         {
             //Input stream may have already been read when a controller determines parameters to
             //pass to an action. Reset position to 0.
@@ -239,7 +240,7 @@ namespace ShopifyGraphQL.Net
         /// <param name="requestBody">The body of the request.</param>
         /// <param name="shopifySecretKey">Your app's secret key.</param>
         /// <returns>A boolean indicating whether the webhook is authentic or not.</returns>
-        public static bool IsAuthenticWebhook(NameValueCollection requestHeaders, string requestBody, string shopifySecretKey)
+        public bool IsAuthenticWebhook(NameValueCollection requestHeaders, string requestBody, string shopifySecretKey)
         {
             var hmacHeaderValuesKey = requestHeaders.AllKeys.FirstOrDefault(key => key.Equals("X-Shopify-Hmac-SHA256", StringComparison.OrdinalIgnoreCase));
             if (hmacHeaderValuesKey == default)
@@ -269,7 +270,7 @@ namespace ShopifyGraphQL.Net
         /// <param name="requestBody">The body of the request.</param>
         /// <param name="shopifySecretKey">Your app's secret key.</param>
         /// <returns>A boolean indicating whether the webhook is authentic or not.</returns>
-        public static bool IsAuthenticWebhook(HttpRequestHeaders requestHeaders, string requestBody, string shopifySecretKey)
+        public bool IsAuthenticWebhook(HttpRequestHeaders requestHeaders, string requestBody, string shopifySecretKey)
         {
             var hmacHeaderValue = requestHeaders.FirstOrDefault(kvp => kvp.Key.Equals("X-Shopify-Hmac-SHA256", StringComparison.OrdinalIgnoreCase)).Value.FirstOrDefault();
 
@@ -287,41 +288,7 @@ namespace ShopifyGraphQL.Net
             return hash == hmacHeader;
         }
 
-        /// <summary>
-        /// A convenience function that tries to ensure that a given URL is a valid Shopify domain. It does this by making a HEAD request to the given domain, and returns true if the response contains an X-ShopId header.
-        ///
-        /// **Warning**: a domain could fake the response header, which would cause this method to return true.
-        ///
-        /// **Warning**: this method of validation is not officially supported by Shopify and could break at any time.
-        /// </summary>
-        /// <param name="url">The URL of the shop to check.</param>
-        /// <returns>A boolean indicating whether the URL is valid.</returns>
-        public static async Task<bool> IsValidShopDomainAsync(string url)
-        {
-            var uri = ShopifyService.BuildShopUri(url, false);
 
-            using (var handler = new HttpClientHandler
-            {
-                AllowAutoRedirect = false
-            })
-            using (var client = new HttpClient(handler))
-            using (var msg = new HttpRequestMessage(HttpMethod.Head, uri))
-            {
-                var version = (typeof(AuthorizationService)).GetTypeInfo().Assembly.GetName().Version;
-                msg.Headers.Add("User-Agent", $"ShopifySharp v{version} (https://github.com/nozzlegear/shopifysharp)");
-
-                try
-                {
-                    var response = await client.SendAsync(msg);
-
-                    return response.Headers.Any(h => h.Key.Equals("X-ShopId", StringComparison.OrdinalIgnoreCase));
-                }
-                catch (HttpRequestException)
-                {
-                    return false;
-                }
-            }
-        }
 
         /// <summary>
         /// Builds an authorization URL for Shopify OAuth integration.
@@ -333,7 +300,7 @@ namespace ShopifyGraphQL.Net
         /// <param name="state">An optional, random string value provided by your application which is unique for each authorization request. During the OAuth callback phase, your application should check that this value matches the one you provided to this method.</param>
         /// <param name="grants">Requested grant types, which will change the type of access token granted upon OAuth completion. Only known grant type is "per-user", which will give an access token restricted to the permissions of the user accepting OAuth integration and will expire when that user logs out. Leave the grants array empty or null to receive a full access token that doesn't expire.</param>
         /// <returns>The authorization url.</returns>
-        public static Uri BuildAuthorizationUrl(IEnumerable<AuthorizationScope> scopes, string myShopifyUrl, string shopifyApiKey, string redirectUrl, string state = null, IEnumerable<string> grants = null)
+        public Uri BuildAuthorizationUrl(IEnumerable<AuthorizationScope> scopes, string myShopifyUrl, string shopifyApiKey, string redirectUrl, string state = null, IEnumerable<string> grants = null)
         {
             return BuildAuthorizationUrl(scopes.Select(s => s.ToSerializedString()), myShopifyUrl, shopifyApiKey, redirectUrl, state, grants);
         }
@@ -348,7 +315,7 @@ namespace ShopifyGraphQL.Net
         /// <param name="state">An optional, random string value provided by your application which is unique for each authorization request. During the OAuth callback phase, your application should check that this value matches the one you provided to this method.</param>
         /// <param name="grants">Requested grant types, which will change the type of access token granted upon OAuth completion. Only known grant type is "per-user", which will give an access token restricted to the permissions of the user accepting OAuth integration and will expire when that user logs out. Leave the grants array empty or null to receive a full access token that doesn't expire.</param>
         /// <returns>The authorization url.</returns>
-        public static Uri BuildAuthorizationUrl(IEnumerable<string> scopes, string myShopifyUrl, string shopifyApiKey, string redirectUrl, string state = null, IEnumerable<string> grants = null)
+        public Uri BuildAuthorizationUrl(IEnumerable<string> scopes, string myShopifyUrl, string shopifyApiKey, string redirectUrl, string state = null, IEnumerable<string> grants = null)
         {
             //Prepare a uri builder for the shop URL
             var builder = new UriBuilder(ShopifyService.BuildShopUri(myShopifyUrl, false));
@@ -388,7 +355,7 @@ namespace ShopifyGraphQL.Net
         /// <param name="shopifyApiKey">Your app's public API key.</param>
         /// <param name="shopifySecretKey">Your app's secret key.</param>
         /// <returns>The shop access token.</returns>
-        public static async Task<string> Authorize(string code, string myShopifyUrl, string shopifyApiKey, string shopifySecretKey)
+        public async Task<string> Authorize(string code, string myShopifyUrl, string shopifyApiKey, string shopifySecretKey)
         {
             return (await AuthorizeWithResult(code, myShopifyUrl, shopifyApiKey, shopifySecretKey)).AccessToken;
         }
@@ -401,7 +368,7 @@ namespace ShopifyGraphQL.Net
         /// <param name="shopifyApiKey">Your app's public API key.</param>
         /// <param name="shopifySecretKey">Your app's secret key.</param>
         /// <returns>The authorization result.</returns>
-        public static async Task<AuthorizationResult> AuthorizeWithResult(string code, string myShopifyUrl, string shopifyApiKey, string shopifySecretKey)
+        public async Task<AuthorizationResult> AuthorizeWithResult(string code, string myShopifyUrl, string shopifyApiKey, string shopifySecretKey)
         {
             var ub = new UriBuilder(ShopifyService.BuildShopUri(myShopifyUrl, false))
             {
