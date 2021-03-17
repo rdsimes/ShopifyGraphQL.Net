@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Primitives;
 using ShopifySharp.Enums;
 using Xunit;
 
@@ -15,7 +13,7 @@ namespace ShopifySharp.Tests
         public void Validates_Proxy_Requests()
         {
             //Configure querystring
-            var qs = new Dictionary<string, StringValues>()
+            var qs = new Dictionary<string, string>()
             {
                 {"shop", "stages-test-shop-2.myshopify.com"},
                 {"path_prefix", "/apps/stages-order-tracker"},
@@ -59,7 +57,7 @@ namespace ShopifySharp.Tests
         [Fact]
         public void Validates_Web_Requests()
         {
-            var qs = new Dictionary<string, StringValues>()
+            var qs = new Dictionary<string, string>()
             {
                 {"hmac", "134298b94779fc1be04851ed8f972c827d9a3b4fdf6725fe97369ef422cc5746"},
                 {"shop", "stages-test-shop-2.myshopify.com"},
@@ -69,24 +67,6 @@ namespace ShopifySharp.Tests
 
             bool isValid = AuthorizationService.IsAuthenticRequest(qs, Utils.SecretKey);
 
-            Assert.True(isValid);
-        }
-
-        [Fact(Skip = "TODO: Generate a real query string with the shop and secret key used by the build server, which contains an ids[] parameter")]
-        public void Validates_Web_Requests_WithArrayParameter()
-        {
-            string query = "hmac=...";
-            var qs = QueryHelpers.ParseQuery(query);
-            bool isValid = AuthorizationService.IsAuthenticRequest(qs, Utils.SecretKey);
-            Assert.True(isValid);
-        }
-
-        [Fact(Skip = "TODO: Generate a real query string with the shop and secret key used by the build server, which contains an ids[] parameter with a single value")]
-        public void Validates_Web_Requests_WithArrayParameter_SingleValue()
-        {
-            string query = "hmac=...";
-            var qs = QueryHelpers.ParseQuery(query);
-            bool isValid = AuthorizationService.IsAuthenticRequest(qs, Utils.SecretKey);
             Assert.True(isValid);
         }
 
