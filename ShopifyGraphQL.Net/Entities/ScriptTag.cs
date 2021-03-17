@@ -1,13 +1,13 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using ShopifySharp.Enums;
+using ShopifyGraphQL.Net.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     /// <summary>
     /// An object representing remote javascript tags that are loaded into the pages of a shop's storefront.

@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ShopifySharp.Infrastructure;
+using ShopifyGraphQL.Net.Infrastructure;
 using Newtonsoft.Json;
 using System.Net;
 using System.Threading;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     /// <summary>
     /// A service for using or manipulating Shopify's Graph API.

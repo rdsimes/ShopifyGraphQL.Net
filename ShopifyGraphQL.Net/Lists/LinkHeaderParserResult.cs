@@ -1,6 +1,6 @@
-﻿using ShopifySharp.Filters;
+﻿using ShopifyGraphQL.Net.Filters;
 
-namespace ShopifySharp.Lists
+namespace ShopifyGraphQL.Net.Lists
 {
     public class LinkHeaderParseResult<T>
     {

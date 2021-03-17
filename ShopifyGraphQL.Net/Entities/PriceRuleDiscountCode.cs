@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     public class PriceRuleDiscountCode : ShopifyObject
     {        

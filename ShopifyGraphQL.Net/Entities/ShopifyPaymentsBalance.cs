@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using System;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     /// <summary>
     /// An object representing a Shopify payments balance.

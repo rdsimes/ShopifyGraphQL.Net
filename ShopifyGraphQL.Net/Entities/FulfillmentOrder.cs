@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using ShopifySharp.Entities;
+using ShopifyGraphQL.Net.Entities;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     /// <summary>
     /// An object representing a Shopify fulfillment order.

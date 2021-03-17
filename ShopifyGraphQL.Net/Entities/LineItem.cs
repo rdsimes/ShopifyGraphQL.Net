@@ -1,14 +1,14 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using ShopifySharp.Converters;
-using ShopifySharp.Enums;
+using ShopifyGraphQL.Net.Converters;
+using ShopifyGraphQL.Net.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     public class LineItem : ShopifyObject
     {

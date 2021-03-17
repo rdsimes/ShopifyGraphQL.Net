@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace ShopifySharp.Filters
+namespace ShopifyGraphQL.Net.Filters
 {
     public class InventoryItemListFilter : ListFilter<InventoryItem>
     {

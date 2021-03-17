@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Net.Http;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     public class LeakyBucketState
     {

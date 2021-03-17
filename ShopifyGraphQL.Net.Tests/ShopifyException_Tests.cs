@@ -6,12 +6,12 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
-using ShopifySharp.Filters;
-using ShopifySharp.Infrastructure;
-using ShopifySharp.Lists;
+using ShopifyGraphQL.Net.Filters;
+using ShopifyGraphQL.Net.Infrastructure;
+using ShopifyGraphQL.Net.Lists;
 using Xunit;
 
-namespace ShopifySharp.Tests
+namespace ShopifyGraphQL.Net.Tests
 {
     [Trait("Category", "ShopifyException")]
     public class ShopifyException_Tests

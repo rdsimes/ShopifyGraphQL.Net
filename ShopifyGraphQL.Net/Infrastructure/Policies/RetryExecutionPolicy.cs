@@ -2,9 +2,9 @@
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using ShopifySharp.Infrastructure;
+using ShopifyGraphQL.Net.Infrastructure;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     /// <summary>
     /// See https://help.shopify.com/api/guides/api-call-limit

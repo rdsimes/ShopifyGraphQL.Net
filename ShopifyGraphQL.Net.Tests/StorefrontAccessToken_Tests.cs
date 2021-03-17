@@ -4,7 +4,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace ShopifySharp.Tests
+namespace ShopifyGraphQL.Net.Tests
 {
     [Trait("Category", "StorefrontAccessToken")]
     public class StorefrontAccessToken_Tests : IClassFixture<StorefrontAccessToken_Tests_Fixture>

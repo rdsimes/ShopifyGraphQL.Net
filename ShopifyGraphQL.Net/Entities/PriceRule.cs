@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     public class PriceRule : ShopifyObject
     {

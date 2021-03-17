@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     /// <summary>
     /// An object representing a properties for <see cref="LineItem.Properties"/>

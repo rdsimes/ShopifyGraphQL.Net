@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using Xunit;
 
-namespace ShopifySharp.Tests
+namespace ShopifyGraphQL.Net.Tests
 {
     [Trait("Category", "ShopifyService")]
     public class ShopifyService_Tests

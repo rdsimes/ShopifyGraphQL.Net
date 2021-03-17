@@ -4,9 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Xunit;
-using EmptyAssert = ShopifySharp.Tests.Extensions.EmptyExtensions;
 
-namespace ShopifySharp.Tests
+namespace ShopifyGraphQL.Net.Tests
 {
     [Trait("Category", "CustomCollection")]
     public class CustomCollection_Tests : IClassFixture<CustomCollection_Tests_Fixture>

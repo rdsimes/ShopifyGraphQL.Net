@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using ShopifySharp.Enums;
+using ShopifyGraphQL.Net.Enums;
 
-namespace ShopifySharp.Filters
+namespace ShopifyGraphQL.Net.Filters
 {
     /// <summary>
     /// Options for filtering <see cref="WebhookService.ListAsync(WebhookFilter)" /> results.

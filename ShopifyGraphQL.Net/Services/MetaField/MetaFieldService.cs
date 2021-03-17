@@ -1,14 +1,14 @@
 using System;
 using Newtonsoft.Json.Linq;
 using System.Net.Http;
-using ShopifySharp.Filters;
+using ShopifyGraphQL.Net.Filters;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using ShopifySharp.Infrastructure;
-using ShopifySharp.Lists;
+using ShopifyGraphQL.Net.Infrastructure;
+using ShopifyGraphQL.Net.Lists;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     /// <summary>
     /// A service for manipulating Shopify metafields.

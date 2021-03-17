@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace ShopifySharp.Filters
+namespace ShopifyGraphQL.Net.Filters
 {
     /// <summary>
     /// A generic class for filtering the results of a .CountAsync command.

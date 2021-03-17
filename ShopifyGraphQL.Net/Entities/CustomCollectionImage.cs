@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using System;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     /// <summary>
     /// Represents the image for a <see cref="CustomCollection"/>

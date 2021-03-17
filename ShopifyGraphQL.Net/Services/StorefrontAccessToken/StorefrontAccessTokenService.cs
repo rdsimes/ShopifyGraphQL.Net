@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using ShopifySharp.Infrastructure;
+using ShopifyGraphQL.Net.Infrastructure;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     /// <summary>
     /// A service for working with Shopify's StorefrontAccessTokens API.

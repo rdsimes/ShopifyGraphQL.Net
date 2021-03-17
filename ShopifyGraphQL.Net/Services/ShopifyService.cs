@@ -4,14 +4,14 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
-using ShopifySharp.Infrastructure;
+using ShopifyGraphQL.Net.Infrastructure;
 using Newtonsoft.Json;
 using System.IO;
 using System.Threading;
-using ShopifySharp.Lists;
-using ShopifySharp.Filters;
+using ShopifyGraphQL.Net.Lists;
+using ShopifyGraphQL.Net.Filters;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     public abstract class ShopifyService
     {

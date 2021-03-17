@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace ShopifySharp.Converters
+namespace ShopifyGraphQL.Net.Converters
 {
     /// <summary>
     /// A custom boolean converter that converts False to null and null to False.

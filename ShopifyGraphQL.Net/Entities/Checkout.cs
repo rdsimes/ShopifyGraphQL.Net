@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     /// <summary>
     /// An entity representing a Shopify product.

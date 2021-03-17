@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace ShopifySharp.Lists
+namespace ShopifyGraphQL.Net.Lists
 {
     public static class LinkHeaderParser
     {

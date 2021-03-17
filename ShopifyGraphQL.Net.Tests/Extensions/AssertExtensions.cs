@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ShopifySharp.Tests.Extensions
+namespace ShopifyGraphQL.Net.Tests.Extensions
 {
     /// <summary>
     /// Extensions which provide assertions to objects that can be empty (strings and IEnumerables).

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace ShopifySharp.Infrastructure
+namespace ShopifyGraphQL.Net.Infrastructure
 {
     public class RequestUri
     {

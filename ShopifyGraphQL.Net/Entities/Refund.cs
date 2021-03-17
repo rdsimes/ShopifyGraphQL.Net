@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     public class Refund : ShopifyObject
     {

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
-using ShopifySharp.Converters;
+using ShopifyGraphQL.Net.Converters;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     public class GiftCard : ShopifyObject
     {

@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace ShopifySharp.Filters
+namespace ShopifyGraphQL.Net.Filters
 {
 	/// <summary>
 	/// Options for filtering <see cref="MetaFieldService.CountAsync(long?, string, MetaFieldFilter)"/> and 

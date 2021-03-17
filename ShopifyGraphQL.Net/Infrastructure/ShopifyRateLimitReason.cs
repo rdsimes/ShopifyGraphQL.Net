@@ -1,4 +1,4 @@
-﻿namespace ShopifySharp
+﻿namespace ShopifyGraphQL.Net
 {
     public enum ShopifyRateLimitReason
     {

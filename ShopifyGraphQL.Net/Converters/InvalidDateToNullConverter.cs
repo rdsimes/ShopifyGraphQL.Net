@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json.Converters;
 using System;
 using Newtonsoft.Json;
-using ShopifySharp.Enums;
+using ShopifyGraphQL.Net.Enums;
 using System.Runtime.Serialization;
 using System.Reflection;
 using System.Linq;
 
-namespace ShopifySharp.Converters
+namespace ShopifyGraphQL.Net.Converters
 {
     /// <summary>
     /// A custom converter that detects invalid dates and convert them to null instead of throwing an exception.

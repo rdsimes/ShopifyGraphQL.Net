@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace ShopifySharp.Filters
+namespace ShopifyGraphQL.Net.Filters
 {
     /// <summary>
     /// Options for filtering the results of listing articles.

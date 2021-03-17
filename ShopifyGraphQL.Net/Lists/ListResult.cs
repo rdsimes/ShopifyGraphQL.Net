@@ -1,9 +1,9 @@
-using ShopifySharp.Filters;
-using ShopifySharp.Infrastructure;
+using ShopifyGraphQL.Net.Filters;
+using ShopifyGraphQL.Net.Infrastructure;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ShopifySharp.Lists
+namespace ShopifyGraphQL.Net.Lists
 {
     public class ListResult<T>
     {

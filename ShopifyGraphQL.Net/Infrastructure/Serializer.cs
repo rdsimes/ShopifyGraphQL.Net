@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace ShopifySharp.Infrastructure
+namespace ShopifyGraphQL.Net.Infrastructure
 {
     /// <summary>
     /// Contains JSON serialization settings and methods used by the rest of the ShopifySharp package.

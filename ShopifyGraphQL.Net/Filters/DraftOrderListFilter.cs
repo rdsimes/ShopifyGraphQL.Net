@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace ShopifySharp.Filters 
+namespace ShopifyGraphQL.Net.Filters 
 {
     public class DraftOrderListFilter : ListFilter<DraftOrder>
     {

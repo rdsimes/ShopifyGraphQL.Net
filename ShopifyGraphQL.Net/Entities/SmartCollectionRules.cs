@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     /// <summary>
     /// An entity representing a Shopify Smart Collection Rule.

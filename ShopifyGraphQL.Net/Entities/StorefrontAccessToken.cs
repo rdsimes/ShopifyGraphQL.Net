@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     public class StorefrontAccessToken : ShopifyObject
     {

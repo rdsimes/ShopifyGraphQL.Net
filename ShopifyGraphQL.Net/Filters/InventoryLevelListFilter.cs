@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace ShopifySharp.Filters
+namespace ShopifyGraphQL.Net.Filters
 {
     /// <summary>
     /// You **must** include InventoryItemIds, LocationIds, or both as filter parameters.

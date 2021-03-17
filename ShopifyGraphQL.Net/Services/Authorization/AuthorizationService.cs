@@ -8,13 +8,13 @@ using System.Security.Cryptography;
 using System.IO;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
-using ShopifySharp.Enums;
-using ShopifySharp.Infrastructure;
+using ShopifyGraphQL.Net.Enums;
+using ShopifyGraphQL.Net.Infrastructure;
 using System.Text.RegularExpressions;
 using System.Net.Http.Headers;
 using System.Reflection;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     public static class AuthorizationService
     {

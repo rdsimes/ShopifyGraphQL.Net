@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using ShopifySharp.Enums;
-using ShopifySharp.Converters;
+using ShopifyGraphQL.Net.Enums;
+using ShopifyGraphQL.Net.Converters;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     public class InventoryItem : ShopifyObject
     {

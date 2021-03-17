@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     internal static class DictionaryExtensions
     {

@@ -1,9 +1,9 @@
 ﻿using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using ShopifySharp.Infrastructure;
+using ShopifyGraphQL.Net.Infrastructure;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     public class DefaultRequestExecutionPolicy : IRequestExecutionPolicy
     {

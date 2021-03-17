@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ShopifySharp.Converters
+namespace ShopifyGraphQL.Net.Converters
 {
     /// <summary>
     /// Converts a Date to and from the provided date format string.

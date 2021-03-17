@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     /// <summary>
     /// Sent via the shop/redacted GDPR webhook, indicating that you should purge the shop's data from your systems.

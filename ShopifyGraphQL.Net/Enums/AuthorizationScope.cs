@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
-using ShopifySharp.Converters;
+using ShopifyGraphQL.Net.Converters;
 using System.Runtime.Serialization;
 
-namespace ShopifySharp.Enums
+namespace ShopifyGraphQL.Net.Enums
 {
     [JsonConverter(typeof(NullableEnumConverter<AuthorizationScope>))]
     public enum AuthorizationScope

@@ -1,13 +1,13 @@
 ﻿using Newtonsoft.Json.Converters;
 using System;
 using Newtonsoft.Json;
-using ShopifySharp.Enums;
+using ShopifyGraphQL.Net.Enums;
 using System.Runtime.Serialization;
 using System.Reflection;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 
-namespace ShopifySharp.Converters
+namespace ShopifyGraphQL.Net.Converters
 {
     /// <summary>
     /// A custom converter that returns null if an error occurs while deserializing

@@ -1,9 +1,9 @@
 using System.Threading;
 using System.Threading.Tasks;
-using ShopifySharp.Filters;
-using ShopifySharp.Lists;
+using ShopifyGraphQL.Net.Filters;
+using ShopifyGraphQL.Net.Lists;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     /// <summary>
     /// A service for interacting with Shopify Collections.

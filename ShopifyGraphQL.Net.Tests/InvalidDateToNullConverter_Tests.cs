@@ -1,9 +1,9 @@
 using Newtonsoft.Json;
-using ShopifySharp.Converters;
+using ShopifyGraphQL.Net.Converters;
 using System;
 using Xunit;
 
-namespace ShopifySharp.Tests
+namespace ShopifyGraphQL.Net.Tests
 {
     [Trait("Category", "InvalidDateToNullConverter")]
     public class InvalidDateToNullConverter_Tests

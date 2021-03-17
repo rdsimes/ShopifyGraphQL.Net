@@ -1,8 +1,8 @@
 using Newtonsoft.Json;
-using ShopifySharp.Converters;
+using ShopifyGraphQL.Net.Converters;
 using Xunit;
 
-namespace ShopifySharp.Tests
+namespace ShopifyGraphQL.Net.Tests
 {
     [Trait("Category", "FalseToNullConverter")]
     public class FalseToNullConverter_Tests

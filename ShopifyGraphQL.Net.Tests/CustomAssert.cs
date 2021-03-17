@@ -1,6 +1,6 @@
 using Xunit.Sdk;
 
-namespace ShopifySharp.Tests
+namespace ShopifyGraphQL.Net.Tests
 {
     public static class CustomAssert
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Xunit.Sdk;
 
-namespace ShopifySharp.Tests
+namespace ShopifyGraphQL.Net.Tests
 {
     /// <summary>
     /// A utility class for running tests.

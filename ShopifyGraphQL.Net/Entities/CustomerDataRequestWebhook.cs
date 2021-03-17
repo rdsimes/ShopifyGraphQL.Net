@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     /// <summary>
     /// Sent via the GDPR customers/data_request webhook, indicating that a customer has requested all data that you may have stored related to them. It's your responsibility to provide this data to the store owner directly. 

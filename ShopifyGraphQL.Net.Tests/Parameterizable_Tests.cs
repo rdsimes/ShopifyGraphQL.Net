@@ -3,7 +3,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using Xunit;
 
-namespace ShopifySharp.Tests
+namespace ShopifyGraphQL.Net.Tests
 {
     [Trait("Category", "Parameterizable")]
     public class Parameterizable_Tests

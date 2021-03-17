@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     public class CustomerInvite : ShopifyObject
     {

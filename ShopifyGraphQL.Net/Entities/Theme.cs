@@ -1,12 +1,12 @@
 using Newtonsoft.Json;
-using ShopifySharp.Enums;
+using ShopifyGraphQL.Net.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     /// <summary>
     /// An entity representing a Shopify theme.

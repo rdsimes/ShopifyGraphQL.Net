@@ -4,7 +4,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System;
 
-namespace ShopifySharp.Infrastructure
+namespace ShopifyGraphQL.Net.Infrastructure
 {
     public class JsonContent : ByteArrayContent
     {

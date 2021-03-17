@@ -1,9 +1,9 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using ShopifySharp.Converters;
+using ShopifyGraphQL.Net.Converters;
 
-namespace ShopifySharp
+namespace ShopifyGraphQL.Net
 {
     /// <summary>
     /// An object representing a Shopify fulfillment event.

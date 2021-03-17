@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ShopifySharp.Enums;
+using ShopifyGraphQL.Net.Enums;
 using Xunit;
 
-namespace ShopifySharp.Tests
+namespace ShopifyGraphQL.Net.Tests
 {
     [Trait("Category", "Authorization")]
     public class Authorization_Tests
